@@ -6,12 +6,12 @@ public class Caching {
     private final int[] testData = new int[ARR_SIZE];
 
     private void run() {
-        for (int i = 0; i < 10_000; i++) {
+        for (int i = 0; i < 10_000; i = i + 1) {
             touchEveryLine();
             touchEveryItem();
         }
         System.out.println("Line     Item");
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100; i = i + 1) {
             long t0 = System.nanoTime();
             touchEveryLine();
             long t1 = System.nanoTime();
@@ -24,12 +24,12 @@ public class Caching {
     }
 
     private void touchEveryItem() {
-        for (int i = 0; i < testData.length; i++)
+        for (int i = 0; i < testData.length; i = i + 1)
             testData[i]++;
     }
 
     private void touchEveryLine() {
-        for (int i = 0; i < testData.length; i += 16)
+        for (int i = 0; i < testData.length; i = i + 16)
             testData[i]++;
     }
 
